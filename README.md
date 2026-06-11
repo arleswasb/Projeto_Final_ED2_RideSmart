@@ -41,7 +41,13 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 
 ##  Resultados e Análise Comparativa
 
-Os experimentos foram consolidados utilizando um cenário de estresse em horário de pico com um raio limite de caminhada de **$500\text{ metros}$**.
+### Cenário de Teste Configurado
+Para a validação e auditoria dos algoritmos da suíte, foi estabelecida uma rota de estresse viário interbairros na cidade de Natal/RN em horário de pico, configurada com os seguintes parâmetros:
+
+* **Origem (Nó A):** `12633403253` — Localizado nas proximidades da **Universidade Federal do Rio Grande do Norte (UFRN)**.
+* **Destino (Nó B):** `535292181` — Localizado na região central do bairro de **Tirol**.
+* **Raio Máximo de Caminhada ($X$):** $500\text{ metros}$ na malha de pedestres.
+* **Ponto de Embarque Otimizado (P):** `30142155` — Nó estratégico fora da zona de retenção primária da origem.
 
 ### Tabela de Desempenho (Padrão IEEE)
 
