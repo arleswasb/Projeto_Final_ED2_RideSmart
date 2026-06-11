@@ -2,11 +2,9 @@
 
 ## RideSmart — Modelagem e Análise de Rotas Urbanas com Grafos
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python" alt="Python Version">
-  <img src="https://img.shields.io/badge/Framework-OSMnx%20%7C%20NetworkX-orange?style=for-the-badge" alt="Frameworks">
-  <img src="https://img.shields.io/badge/Escopo-Natal/%2nRN-green?style=for-the-badge" alt="Escopo Geográfico">
-</p>
+![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat-square&logo=python)
+![Framework](https://img.shields.io/badge/Framework-OSMnx%20%7C%20NetworkX-orange?style=flat-square)
+![Escopo](https://img.shields.io/badge/Escopo-Natal%20%7C%20RN-green?style=flat-square)
 
 ## Descrição do Projeto
 O **RideSmart** é o projeto final da disciplina de **Estrutura de Dados II (ED2)**. O sistema simula o motor de roteamento de um aplicativo de mobilidade urbana multimodal aplicado à cidade de **Natal/RN**. 
