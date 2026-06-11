@@ -39,31 +39,32 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 
 ---
 
+---
+
 ##  Resultados e Análise Comparativa
 
-### Cenário de Teste Configurado
-Para a validação e auditoria dos algoritmos da suíte, foi estabelecida uma rota de estresse viário interbairros na cidade de Natal/RN em horário de pico, configurada com os seguintes parâmetros:
+###  Cenário de Teste Configurado (Oficial)
+Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real interbairros na região central de Natal/RN (Conexão Alecrim ➔ Tirol):
 
-* **Origem (Nó A):** `12633403253` — Localizado nas proximidades da **Universidade Federal do Rio Grande do Norte (UFRN)**.
-* **Destino (Nó B):** `535292181` — Localizado na região central do bairro de **Tirol**.
-* **Raio Máximo de Caminhada ($X$):** $500\text{ metros}$ na malha de pedestres.
-* **Ponto de Embarque Otimizado (P):** `30142155` — Nó estratégico fora da zona de retenção primária da origem.
+* **Origem (Nó A - Pedestre):** `301429461` (Coordenadas: -5.78037, -35.20187)
+* **Destino (Nó B - Carro):** `6991059126` (Coordenadas: -5.78348, -35.19113)
+* **Raio Máximo de Caminhada ($X$):** $500\text{ metros}$ na malha de pedestres (**156 pontos elegíveis avaliados**).
+* **Ponto de Embarque Otimizado (P):** `301429461` (Origem Direta).
 
 ### Tabela de Desempenho (Padrão IEEE)
 
-| Algoritmo (ED2) | Decisão Decidida | Ponto P Ideal | Tempo Global (min) | Nós Rota Carro | Runtime (ms) |
-| --- | --- | --- | --- | --- | --- |
-| **Dijkstra Simples O(V²)** | Embarque em P | 30142155 | 46.66 | 45 | 7.918.322 |
-| **Dijkstra + Heap O(E log V)** | Embarque em P | 30142155 | 46.66 | 45 | 456.343 |
-| **Dijkstra Bidirecional** | Embarque em P | 30142155 | 46.66 | 45 | 972.479 |
-| **Algoritmo A estrela (Haversine)** | Embarque em P | 30142155 | 46.66 | 45 | **526.083** |
-| **Bellman-Ford O(V·E)** | Embarque em P | 30142155 | 46.66 | 45 | 379.829.769 |
+| Algoritmo (ED2) | Origem (Nó A) | Destino (Nó B) | Decisão Decidida | Ponto P Ideal | Tempo Global (min) | Nós Rota Carro | Runtime (ms) |
+| :--- | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
+| **Dijkstra Simples O(V²)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 27.734,649 |
+| **Dijkstra + Heap O(E log V)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 1.625,772 |
+| **Dijkstra Bidirecional** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 2.613,473 |
+| **Algoritmo A\* (Haversine)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | **1.597,430** |
+| **Bellman-Ford O(V·E)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 1.127.934,987 |
 
-###  Principais Conclusões de ED2
-
-* **Consistência Matemática:** Todos os 5 algoritmos convergiram exatamente para o mesmo Ponto P, tempo de viagem e número de nós, validando a exatidão das implementações.
-* **O Tabu do Bellman-Ford:** Levou **mais de 6 minutos** ($379\text{ segundos}$) para computar o resultado. Isso prova empiricamente a sua ineficiência em redes viárias reais que não possuem arestas de peso negativo.
-* **Dijkstra Heap vs. A*:** O $A^*$ demonstrou a melhor eficiência de varredura espacial, restringindo o espaço de busca na direção do destino graças à heurística admissível de Haversine.
+###  Discussão Crítica dos Novos Resultados
+* **Inteligência do Trade-off (Caminhada vs. Tempo):** O sistema provou sua robustez ao decidir pelo *Embarque Direto*. Como a rota de carro leva apenas 4 minutos, qualquer deslocamento a pé consumiria mais tempo do que a economia gerada, provando que o algoritmo calcula o balanço real de custo-benefício.
+* **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer as 48.203 arestas de Natal multiplicadas pelos 156 pontos do raio de busca, ele levou incríveis **1.127 segundos (mais de 18 minutos!)** para computar uma rota simples de 4 minutos. Isso sacramenta sua inviabilidade prática em sistemas de transporte de grande escala.
+* **Supremacia do A\*:** O $A^*$ com a heurística de Haversine cravou o menor tempo de processamento (**1.597 ms**), demonstrando excelente eficiência ao podar ramos desnecessários do grafo de Natal na direção leste do destino.
 
 ---
 
@@ -71,7 +72,8 @@ Para a validação e auditoria dos algoritmos da suíte, foi estabelecida uma ro
 
 O sistema utiliza a biblioteca `Folium` para renderizar o mapa interativo das rotas calculadas. A rota multimodal exibe o trecho a pé (**linha azul**) até o ponto de embarque otimizado, seguido pelo trajeto vehicular (**linha vermelha**) desviando dos gargalos de trânsito em Natal.
 
-*(Dica: Adicione aqui uma captura de tela do mapa gerado no seu notebook!)*
+<img width="1013" height="726" alt="image" src="https://github.com/user-attachments/assets/e1913466-0dc8-44f6-9f2e-8ada8546bd7b" />
+
 
 ---
 
