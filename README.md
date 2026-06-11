@@ -52,7 +52,7 @@ Os experimentos foram consolidados utilizando um cenário de estresse em horári
 | **Dijkstra Simples O(V²)** | Embarque em P | 30142155 | 46.66 | 45 | 7.918.322 |
 | **Dijkstra + Heap O(E log V)** | Embarque em P | 30142155 | 46.66 | 45 | 456.343 |
 | **Dijkstra Bidirecional** | Embarque em P | 30142155 | 46.66 | 45 | 972.479 |
-| **Algoritmo A* (Haversine)** | Embarque em P | 30142155 | 46.66 | 45 | **526.083** |
+| **Algoritmo A estrela (Haversine)** | Embarque em P | 30142155 | 46.66 | 45 | **526.083** |
 | **Bellman-Ford O(V·E)** | Embarque em P | 30142155 | 46.66 | 45 | 379.829.769 |
 
 ###  Principais Conclusões de ED2
