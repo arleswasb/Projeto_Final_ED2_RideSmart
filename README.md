@@ -1,6 +1,6 @@
 
 
-##RideSmart — Modelagem e Análise de Rotas Urbanas com Grafos
+## RideSmart — Modelagem e Análise de Rotas Urbanas com Grafos
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python" alt="Python Version">
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Escopo-Natal/%2nRN-green?style=for-the-badge" alt="Escopo Geográfico">
 </p>
 
-## 📝 Descrição do Projeto
+## Descrição do Projeto
 O **RideSmart** é o projeto final da disciplina de **Estrutura de Dados II (ED2)**. O sistema simula o motor de roteamento de um aplicativo de mobilidade urbana multimodal aplicado à cidade de **Natal/RN**. 
 
 O objetivo principal é resolver o seguinte problema de otimização viária:
@@ -20,7 +20,7 @@ O objetivo principal é resolver o seguinte problema de otimização viária:
 
 ```
 
-## 🛠️ Arquitetura e Modelagem do Grafo
+##  Arquitetura e Modelagem do Grafo
 
 Para evitar anomalias de roteamento e contaminação de regras viárias, a cidade de Natal foi modelada em **Duas Camadas de Grafos Independentes**:
 
@@ -29,7 +29,7 @@ Para evitar anomalias de roteamento e contaminação de regras viárias, a cidad
 
 ---
 
-## 🧬 Algoritmos Implementados e Comparados
+##  Algoritmos Implementados e Comparados
 
 O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de caminhos mínimos**:
 
@@ -41,7 +41,7 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 
 ---
 
-## 📊 Resultados e Análise Comparativa
+##  Resultados e Análise Comparativa
 
 Os experimentos foram consolidados utilizando um cenário de estresse em horário de pico com um raio limite de caminhada de **$500\text{ metros}$**.
 
@@ -55,7 +55,7 @@ Os experimentos foram consolidados utilizando um cenário de estresse em horári
 | **Algoritmo A* (Haversine)** | Embarque em P | 30142155 | 46.66 | 45 | **526.083** |
 | **Bellman-Ford O(V·E)** | Embarque em P | 30142155 | 46.66 | 45 | 379.829.769 |
 
-### 🧠 Principais Conclusões de ED2
+###  Principais Conclusões de ED2
 
 * **Consistência Matemática:** Todos os 5 algoritmos convergiram exatamente para o mesmo Ponto P, tempo de viagem e número de nós, validando a exatidão das implementações.
 * **O Tabu do Bellman-Ford:** Levou **mais de 6 minutos** ($379\text{ segundos}$) para computar o resultado. Isso prova empiricamente a sua ineficiência em redes viárias reais que não possuem arestas de peso negativo.
@@ -63,7 +63,7 @@ Os experimentos foram consolidados utilizando um cenário de estresse em horári
 
 ---
 
-## 🗺️ Visualização Multimodal no Mapa
+##  Visualização Multimodal no Mapa
 
 O sistema utiliza a biblioteca `Folium` para renderizar o mapa interativo das rotas calculadas. A rota multimodal exibe o trecho a pé (**linha azul**) até o ponto de embarque otimizado, seguido pelo trajeto vehicular (**linha vermelha**) desviando dos gargalos de trânsito em Natal.
 
@@ -71,7 +71,7 @@ O sistema utiliza a biblioteca `Folium` para renderizar o mapa interativo das ro
 
 ---
 
-## 🚀 Como Executar o Projeto
+##  Como Executar o Projeto
 
 1. Clone o repositório:
 
@@ -96,7 +96,7 @@ jupyter notebook PROJETO_FINAL.ipynb
 
 ---
 
-## 👥 Componentes do Grupo
+## Componentes do Grupo
 
 * **Nome Completo 1** - Matrícula 1
 * **Nome Completo 2** - Matrícula 2
