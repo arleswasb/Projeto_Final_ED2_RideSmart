@@ -104,10 +104,8 @@ jupyter notebook PROJETO_FINAL.ipynb
 
 ## Componentes do Grupo
 
-* **Nome Completo 1** - Matrícula 1
-* **Nome Completo 2** - Matrícula 2
-* **Nome Completo 3** - Matrícula 3
-* **Nome Completo 4** - Matrícula 4
+* **Werber Arles de Souza Barradas** - 20250070655
+* **Nilton Fontes Barreto Neto** - 20250070771
 
 ---
 
