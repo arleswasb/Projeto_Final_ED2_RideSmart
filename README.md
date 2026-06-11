@@ -1,9 +1,6 @@
-Um `README.md` bem organizado é o cartão de visitas do seu projeto. Como a rubrica do professor atribui **25% da nota para Experimentos e Métricas** e exige um repositório organizado, o seu `README.md` precisa ir direto ao ponto, mostrando os resultados visuais (mapas) e quantitativos (tabela) que obtivemos.
 
-Aqui está um modelo completo, estruturado e profissional para o seu repositório do GitHub. Basta copiar o bloco de código Markdown abaixo, criar um arquivo chamado `README.md` na raiz do seu repositório e colar o conteúdo lá:
 
-```markdown
-# 🚗 RideSmart — Modelagem e Análise de Rotas Urbanas com Grafos
+##RideSmart — Modelagem e Análise de Rotas Urbanas com Grafos
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python" alt="Python Version">
@@ -22,8 +19,6 @@ O objetivo principal é resolver o seguinte problema de otimização viária:
  Trecho 2: P ➔ B (Carro com trânsito via G_carro)
 
 ```
-
----
 
 ## 🛠️ Arquitetura e Modelagem do Grafo
 
