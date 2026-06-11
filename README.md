@@ -36,7 +36,7 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 * **Dijkstra Simples:** Busca linear por menor custo com complexidade $O(V^2)$.
 * **Dijkstra com Heap:** Otimizado com fila de prioridades binária, com complexidade $O(E \log V)$.
 * **Dijkstra Bidirecional:** Algoritmo adicional da literatura que expande frentes de onda simultâneas da origem e do destino.
-* **Algoritmo A* (A-Estrela):** Busca heurística direcionada utilizando a **Fórmula de Haversine** adaptada para tempo como função de custo estimado.
+* **Algoritmo A-Estrela:** Busca heurística direcionada utilizando a **Fórmula de Haversine** adaptada para tempo como função de custo estimado.
 * **Bellman-Ford:** Contraexemplo acadêmico utilizado para avaliar o impacto do relaxamento exaustivo de arestas $O(V \cdot E)$.
 
 ---
