@@ -111,13 +111,6 @@ jupyter notebook PROJETO_FINAL.ipynb
 
 **Junho de 2026** - Universidade Federal do Rio Grande do Norte (UFRN)
 
-```
-
----
-
-### 🏁 Próximos Passos
-Com o código limpo, a tabela preenchida com os dados exatos da sua bateria de testes e o `README.md` pronto, o seu repositório está impecável. 
-
-Agora só nos resta a última etapa do projeto: o **Relatório Científico de até 4 páginas no formato IEEE**. Quer que eu gere o esqueleto em sintaxe LaTeX desse artigo para você colar no seu editor?
+``
 
 ```
