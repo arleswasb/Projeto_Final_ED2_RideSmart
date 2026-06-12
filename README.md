@@ -72,7 +72,7 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 
 O sistema utiliza a biblioteca `Folium` para renderizar o mapa interativo das rotas calculadas. A rota multimodal exibe o trecho a pé (**linha azul**) até o ponto de embarque otimizado, seguido pelo trajeto vehicular (**linha vermelha**) desviando dos gargalos de trânsito em Natal.
 
-<img width="1013" height="726" alt="image" src="https://github.com/user-attachments/assets/e1913466-0dc8-44f6-9f2e-8ada8546bd7b" />
+<img width="1013" height="726" alt="image" src="images/resultado.png" />
 
 
 ---
