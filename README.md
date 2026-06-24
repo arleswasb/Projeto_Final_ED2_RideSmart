@@ -41,30 +41,30 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 
 ---
 
-##  Resultados e Análise Comparativa
+## 📊 Resultados e Análise Comparativa
 
-###  Cenário de Teste Configurado (Oficial)
-Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real interbairros na região central de Natal/RN (Conexão Alecrim ➔ Tirol):
+### 🎯 Cenário de Teste Configurado (Oficial)
+Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real utilizando a ferramenta de projeção de coordenadas na malha de Natal/RN:
 
-* **Origem (Nó A - Pedestre):** `301429461` (Coordenadas: -5.78037, -35.20187)
-* **Destino (Nó B - Carro):** `6991059126` (Coordenadas: -5.78348, -35.19113)
-* **Raio Máximo de Caminhada ($X$):** $500\text{ metros}$ na malha de pedestres (**156 pontos elegíveis avaliados**).
-* **Ponto de Embarque Otimizado (P):** `301429461` (Origem Direta).
+* **Origem (Nó A - Pedestre):** `3801088987` (Coordenadas: -5.79801, -35.21905)
+* **Destino (Nó B - Carro):** `554860582` (Coordenadas: -5.80668, -35.20303)
+* **Raio Máximo de Caminhada:** 500 metros na malha de pedestres (**169 pontos elegíveis avaliados**).
+* **Ponto de Embarque Otimizado (P):** `302599917`
 
-### Tabela de Desempenho (Padrão IEEE)
+### ⏱️ Tabela de Desempenho (Padrão IEEE)
 
-| Algoritmo (ED2) | Origem (Nó A) | Destino (Nó B) | Decisão Decidida | Ponto P Ideal | Tempo Global (min) | Nós Rota Carro | Runtime (ms) |
+| Algoritmo (ED2) | Origem (Nó A) | Destino (Nó B) | Decisão | Ponto P Ideal | Tempo Global (min) | Nós Rota Carro | Runtime (ms) |
 | :--- | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
-| **Dijkstra Simples O(V²)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 27.734,649 |
-| **Dijkstra + Heap O(E log V)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 1.625,772 |
-| **Dijkstra Bidirecional** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 2.613,473 |
-| **Algoritmo A\* (Haversine)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | **1.597,430** |
-| **Bellman-Ford O(V·E)** | 301429461 | 6991059126 | Embarque Direto em A | 301429461 | 4.07 | 37 | 1.127.934,987 |
+| **Dijkstra Simples O(V²)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 655.487,617 |
+| **Dijkstra + Heap O(E log V)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 2.507,038 |
+| **Dijkstra Bidirecional** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 3.872,972 |
+| **Algoritmo A* (Haversine)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | **2.273,397** |
+| **Bellman-Ford O(V·E)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 1.041.944,939 |
 
-###  Discussão Crítica dos Novos Resultados
-* **Inteligência do Trade-off (Caminhada vs. Tempo):** O sistema provou sua robustez ao decidir pelo *Embarque Direto*. Como a rota de carro leva apenas 4 minutos, qualquer deslocamento a pé consumiria mais tempo do que a economia gerada, provando que o algoritmo calcula o balanço real de custo-benefício.
-* **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer as 48.203 arestas de Natal multiplicadas pelos 156 pontos do raio de busca, ele levou incríveis **1.127 segundos (mais de 18 minutos!)** para computar uma rota simples de 4 minutos. Isso sacramenta sua inviabilidade prática em sistemas de transporte de grande escala.
-* **Supremacia do A\*:** O $A^*$ com a heurística de Haversine cravou o menor tempo de processamento (**1.597 ms**), demonstrando excelente eficiência ao podar ramos desnecessários do grafo de Natal na direção leste do destino.
+### 🧠 Discussão Crítica dos Resultados
+* **Inteligência do Trade-off (Caminhada vs. Tempo):** O sistema provou sua robustez e validou a hipótese central do projeto ao decidir pelo **Embarque em P (Multimodal)**. O motor de roteamento detectou que caminhar até o nó `302599917` (escapando de gargalos ou vias lentas no entorno da origem) economiza tempo suficiente no trajeto do carro para compensar o esforço físico do pedestre, resultando em um tempo global otimizado de 7.42 minutos.
+* **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer todas as arestas da malha veicular e multiplicá-las pelos 169 pontos elegíveis do raio de caminhada, o custo de processamento foi catastrófico: foram necessários mais de **1041 segundos (aproximadamente 17.3 minutos)** para encontrar a rota. Isso sacramenta matematicamente sua inviabilidade em aplicações de mobilidade urbana em tempo real.
+* **Supremacia do A*:** O A* com a heurística de Haversine cravou o menor tempo de processamento absoluto (2.273 ms), superando o Dijkstra com Heap. Isso demonstra a excelente eficiência da heurística espacial ao "puxar" a busca na direção geográfica do destino, evitando abrir ramos viários desnecessários no sentido oposto ao movimento.
 
 ---
 
