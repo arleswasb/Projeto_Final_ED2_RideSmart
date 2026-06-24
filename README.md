@@ -71,9 +71,13 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 
 ##  Visualização Multimodal no Mapa
 
-O sistema utiliza a biblioteca `Folium` para renderizar o mapa interativo das rotas calculadas. A rota multimodal exibe o trecho a pé (**linha azul**) até o ponto de embarque otimizado, seguido pelo trajeto vehicular (**linha vermelha**) desviando dos gargalos de trânsito em Natal.
+A rota multimodal exibe o trecho a pé (**linha azul**) até o ponto de embarque otimizado, seguido pelo trajeto vehicular (**linha vermelha**) desviando dos gargalos de trânsito em Natal.
 
 <img width="1013" height="726" alt="image" src="images/resultado.png" />
+
+O mapa comparativo exibe o trecho a pé (linha azul) até o ponto de embarque otimizado. Para o trajeto veicular, ilustra o contraste entre os algoritmos através de quatro rotas: a menor distância absoluta (linha cinza), o trajeto mais rápido ideal sem trânsito (linha verde), a rota inteligente do RideSmart desviando dos gargalos reais (linha vermelha) e o cenário de embarque direto na origem, sem caminhada (linha roxa).
+
+<img width="1013" height="726" alt="image" src="images/resultado2.png" />
 
 
 ---
