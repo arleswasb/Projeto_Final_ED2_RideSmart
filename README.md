@@ -41,9 +41,9 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 
 ---
 
-## 📊 Resultados e Análise Comparativa
+##  Resultados e Análise Comparativa
 
-### 🎯 Cenário de Teste Configurado (Oficial)
+###  Cenário de Teste Configurado (Oficial)
 Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real utilizando a ferramenta de projeção de coordenadas na malha de Natal/RN:
 
 * **Origem (Nó A - Pedestre):** `3801088987` (Coordenadas: -5.79801, -35.21905)
@@ -51,20 +51,21 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 * **Raio Máximo de Caminhada:** 500 metros na malha de pedestres (**169 pontos elegíveis avaliados**).
 * **Ponto de Embarque Otimizado (P):** `302599917`
 
-### ⏱️ Tabela de Desempenho (Padrão IEEE)
+###  Tabela de Desempenho (Padrão IEEE)
 
-| Algoritmo (ED2) | Origem (Nó A) | Destino (Nó B) | Decisão | Ponto P Ideal | Tempo Global (min) | Nós Rota Carro | Runtime (ms) |
-| :--- | :---: | :---: | :--- | :---: | :---: | :---: | :---: |
-| **Dijkstra Simples O(V²)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 655.487,617 |
-| **Dijkstra + Heap O(E log V)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 2.507,038 |
-| **Dijkstra Bidirecional** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 3.872,972 |
-| **Algoritmo A* (Haversine)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | **2.273,397** |
-| **Bellman-Ford O(V·E)** | 3801088987 | 554860582 | Embarque em P (Multimodal) | 302599917 | 7.42 | 49 | 1.041.944,939 |
+| Algoritmo (ED2) | Decisão | Tempo Global (min) | Dist. A Pé (m) | Dist. Carro (km) | Nós Expandidos | Nós Rota Carro | Runtime (ms) |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Dijkstra Simples O(V²)** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | 308.723 | 49 | 63.060,38 |
+| **Dijkstra + Heap O(E log V)** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | 308.840 | 49 | 2.499,71 |
+| **Dijkstra Bidirecional** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | **137.458** | 49 | 2.819,07 |
+| **Algoritmo A\* (Haversine)** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | 174.873 | 49 | **3.270,09** |
+| **Bellman-Ford O(V·E)** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | 684.830.520 | 49 | 1.047.709,81 |
 
-### 🧠 Discussão Crítica dos Resultados
-* **Inteligência do Trade-off (Caminhada vs. Tempo):** O sistema provou sua robustez e validou a hipótese central do projeto ao decidir pelo **Embarque em P (Multimodal)**. O motor de roteamento detectou que caminhar até o nó `302599917` (escapando de gargalos ou vias lentas no entorno da origem) economiza tempo suficiente no trajeto do carro para compensar o esforço físico do pedestre, resultando em um tempo global otimizado de 7.42 minutos.
-* **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer todas as arestas da malha veicular e multiplicá-las pelos 169 pontos elegíveis do raio de caminhada, o custo de processamento foi catastrófico: foram necessários mais de **1041 segundos (aproximadamente 17.3 minutos)** para encontrar a rota. Isso sacramenta matematicamente sua inviabilidade em aplicações de mobilidade urbana em tempo real.
-* **Supremacia do A*:** O A* com a heurística de Haversine cravou o menor tempo de processamento absoluto (2.273 ms), superando o Dijkstra com Heap. Isso demonstra a excelente eficiência da heurística espacial ao "puxar" a busca na direção geográfica do destino, evitando abrir ramos viários desnecessários no sentido oposto ao movimento.
+###  Discussão Crítica dos Resultados
+* **A* vs. Dijkstra (Eficiência Espacial):** Respondendo à hipótese teórica, o Algoritmo A* expandiu substancialmente menos nós (174k) do que o Dijkstra (308k). Isso comprova a eficácia da heurística de Haversine em "puxar" a frente de busca geometricamente em direção ao destino, evitando explorar avenidas no sentido oposto.
+* **O Campeão Espacial (Bidirecional):** O algoritmo Bidirecional foi o mais eficiente na contenção de memória, expandindo apenas 137 mil nós ao encontrar as duas frentes de onda no meio do caminho.
+* **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer o grafo inteiro repetidas vezes para os 169 pontos candidatos do raio de caminhada, o custo de processamento foi catastrófico: foram necessárias mais de **684 milhões de operações**, levando cerca de 17,4 minutos para encontrar a rota. Isso sacramenta matematicamente sua inviabilidade em aplicações de GPS em tempo real.
+* **Cenários de Trânsito:** A injeção de trânsito sintético alterou drasticamente o perfil viário. O percurso que levaria apenas **3.80 min** em condições de via livre saltou para **6.75 min** no cenário realista de congestionamento.
 
 ---
 
