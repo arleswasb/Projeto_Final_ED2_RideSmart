@@ -44,21 +44,12 @@ O projeto avalia o desempenho empírico e a corretude de **5 algoritmos de camin
 ##  Resultados e Análise Comparativa
 
 ###  Cenário de Teste Configurado (Oficial)
-<<<<<<< Updated upstream
 Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real utilizando a ferramenta de projeção de coordenadas na malha de Natal/RN:
 
 * **Origem (Nó A - Pedestre):** `3801088987` (Coordenadas: -5.79801, -35.21905)
 * **Destino (Nó B - Carro):** `554860582` (Coordenadas: -5.80668, -35.20303)
 * **Raio Máximo de Caminhada:** 500 metros na malha de pedestres (**169 pontos elegíveis avaliados**).
 * **Ponto de Embarque Otimizado (P):** `302599917`
-=======
-Para a validação final e auditoria das estruturas de dados, configuramos um cenário de teste real interbairros na região central de Natal/RN:
-
-* **Origem (Nó A - Pedestre):** `3801088987`
-* **Destino (Nó B - Carro):** `554860582`
-* **Raio Máximo de Caminhada ($X$):** $500\text{ metros}$ na malha de pedestres (**169 pontos de embarque elegíveis mapeados**).
-* **Ponto de Embarque Otimizado (P):** `302599917` (Embarque em P - Multimodal).
->>>>>>> Stashed changes
 
 ###  Tabela de Desempenho (Padrão IEEE)
 
@@ -75,32 +66,6 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 * **O Campeão Espacial (Bidirecional):** O algoritmo Bidirecional foi o mais eficiente na contenção de memória, expandindo apenas 137 mil nós ao encontrar as duas frentes de onda no meio do caminho.
 * **Explosão Combinatória no Bellman-Ford:** Como o algoritmo precisou varrer o grafo inteiro repetidas vezes para os 169 pontos candidatos do raio de caminhada, o custo de processamento foi catastrófico: foram necessárias mais de **684 milhões de operações**, levando cerca de 17,4 minutos para encontrar a rota. Isso sacramenta matematicamente sua inviabilidade em aplicações de GPS em tempo real.
 * **Cenários de Trânsito:** A injeção de trânsito sintético alterou drasticamente o perfil viário. O percurso que levaria apenas **3.80 min** em condições de via livre saltou para **6.75 min** no cenário realista de congestionamento.
-=======
-| Algoritmo (ED2) | Decisão Decidida | Ponto P Ideal | Tempo Global (min) | Dist. A Pé (m) | Dist. Carro (km) | Nós Expandidos | Nós Rota Carro | Runtime (ms) |
-| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Dijkstra Simples O(V²)** | Embarque em P (Multimodal) | 302599917 | 7.52 | 48.6 | 3.16 | 311932 | 44 | 660.821,864 |
-| **Dijkstra + Heap O(E log V)** | Embarque em P (Multimodal) | 302599917 | 7.52 | 48.6 | 3.16 | 312049 | 44 | **2.700,356** |
-| **Dijkstra Bidirecional** | Embarque em P (Multimodal) | 302599917 | 7.52 | 48.6 | 3.16 | 143036 | 44 | 3.319,518 |
-| **Algoritmo A\* (Haversine)** | Embarque em P (Multimodal) | 302599917 | 7.52 | 48.6 | 3.16 | 178868 | 44 | 3.296,398 |
-| **Bellman-Ford O(V·E)** | Embarque em P (Multimodal) | 302599917 | 7.52 | 48.6 | 3.16 | 634473744 | 44 | 964.140,591 |
-
-### 🚦 Análise dos 4 Cenários Exigidos (Conexões A ➔ P ➔ B)
-
-| Cenário | Rota / Conexão | Detalhes |
-| :--- | :---: | :--- |
-| **1. Rota mais Curta em Distância** | P ➔ B | 2531.58 metros |
-| **2. Rota Rápida sem Trânsito** | P ➔ B | 3.80 min |
-| **3. Rota Rápida com Trânsito** | P ➔ B | 6.85 min |
-| **4. Tempo de Carro s/ Caminhada (Linha Roxa)** | A ➔ B Direto | 6.85 min |
-
-> [!NOTE]
-> **Aviso de Alinhamento:** O nó de rua mais próximo de A coincide com o ponto P.
-
-###  Discussão Crítica dos Novos Resultados
-* **Inteligência do Trade-off (Caminhada vs. Tempo):** O sistema selecionou a decisão de **Embarque em P (Multimodal)** com o ponto de embarque ideal `302599917`. A caminhada até o ponto de embarque foi de apenas `48.6` metros, permitindo economizar tempo global ao evitar partes congestionadas e otimizar o embarque.
-* **Impacto do Min-Heap no Dijkstra:** O Dijkstra com Heap $O(E \log V)$ completou a otimização em apenas **2.700 ms**, enquanto a versão simples quadrática $O(V^2)$ levou exorbitantes **660.821 ms (cerca de 11 minutos)**, comprovando a eficácia e a necessidade de filas de prioridade eficientes.
-* **Explosão Combinatória no Bellman-Ford:** Com o aumento dos pontos elegíveis no raio de busca para 169 pontos, o Bellman-Ford gerou mais de **634 milhões de nós expandidos**, levando aproximadamente **16 minutos (964.140 ms)** para executar. Isso reforça a inviabilidade de algoritmos exaustivos em tempo real sobre redes urbanas reais.
-* **Performance do A\* e Dijkstra Bidirecional:** Ambos os algoritmos mantiveram tempos de processamento altamente eficientes (~3.3 segundos), podando significativamente o espaço de busca na rede viária de Natal.
 
 ---
 
@@ -151,3 +116,6 @@ jupyter notebook PROJETO_FINAL.ipynb
 
 **Junho de 2026** - Universidade Federal do Rio Grande do Norte (UFRN)
 
+``
+
+```
