@@ -62,7 +62,6 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 
 ###  Tabela de Desempenho (Padrão IEEE)
 
-<<<<<<< Updated upstream
 | Algoritmo (ED2) | Decisão | Tempo Global (min) | Dist. A Pé (m) | Dist. Carro (km) | Nós Expandidos | Nós Rota Carro | Runtime (ms) |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Dijkstra Simples O(V²)** | Embarque em P (Multimodal) | 7.42 | 48.6 | 3.07 | 308.723 | 49 | 63.060,38 |
@@ -102,7 +101,6 @@ Para a validação final e auditoria das estruturas de dados, configuramos um ce
 * **Impacto do Min-Heap no Dijkstra:** O Dijkstra com Heap $O(E \log V)$ completou a otimização em apenas **2.700 ms**, enquanto a versão simples quadrática $O(V^2)$ levou exorbitantes **660.821 ms (cerca de 11 minutos)**, comprovando a eficácia e a necessidade de filas de prioridade eficientes.
 * **Explosão Combinatória no Bellman-Ford:** Com o aumento dos pontos elegíveis no raio de busca para 169 pontos, o Bellman-Ford gerou mais de **634 milhões de nós expandidos**, levando aproximadamente **16 minutos (964.140 ms)** para executar. Isso reforça a inviabilidade de algoritmos exaustivos em tempo real sobre redes urbanas reais.
 * **Performance do A\* e Dijkstra Bidirecional:** Ambos os algoritmos mantiveram tempos de processamento altamente eficientes (~3.3 segundos), podando significativamente o espaço de busca na rede viária de Natal.
->>>>>>> Stashed changes
 
 ---
 
